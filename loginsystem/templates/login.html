@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Login </title>
+    <link rel="stylesheet" href="{% static "style.css" %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">User Name</span>
+            <input type="text" placeholder="Enter your username" name="username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your password" name="password" required>
+          </div>
+        </div>
+        <div class="user-type" >
+            <input type="radio" name="user" id="dot-1" value="0" required>
+            <input type="radio" name="user" id="dot-2" value="1">
+            <input type="radio" name="user" id="dot-3" value="2">
+           
+            <span class="user-title" required>User Type</span>
+            <div class="category" >
+              <label for="dot-1">
+              <span class="dot one"></span>
+              <span >User Login</span>
+            </label>
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span >Client Login</span>
+            </label>
+            <label for="dot-3">
+              <span class="dot three"></span>
+              <span >Admin Login</span>
+            </label>
+            
+              </div>
+          </div>
+        <div class="button">
+          <input type="submit" value="Login">
+        </div>
+        
+      </form>
+      <div class="msg">
+        {% for message in messages %}
+        <div class="container-fluid ">
+          <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert" >
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="True">&times;</span>
+            </button>
+            {{ message }}
+          </div>
+        </div>
+        
+        {% endfor %}
+      </div>
+    <a href="{% url "signup" %}" class="register"> Do You Want To Register..?</a>
+    
+    </div>
+  </div>
+
+</body>
+</html>
